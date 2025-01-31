@@ -30,3 +30,41 @@ spec:
             memory: "128Mi"
             cpu: "500m"
         
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: go-app
+  namespace: go-survey
+  labels:
+    app: go-app
+spec:
+  selector:
+    app: go-app
+  type: ClusterIP  
+  ports:
+  - port: 8080
+    targetPort: 8080
+
+
+--- 
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: go-app-ingress
+  namespace: go-survey
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  rules:
+  - host: go-app.ahmedalaa14.com
+    http:
+      paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: go-app
+              port:
+                number: 8080    

@@ -34,3 +34,34 @@ spec:
         - name: mongo-data
           persistentVolumeClaim:
             claimName: mongo-pvc
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: mongo-app-service 
+    namespace: go-survey
+    labels:
+        app: mongo-app
+spec:   
+    selector:
+        app: db-app
+    type: ClusterIP
+    ports:
+        - name: mongo-app
+          port: 27017
+          targetPort: 27017      
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mongo-pvc
+  namespace: go-survey
+spec:   
+    accessModes:
+        - ReadWriteOnce
+    resources:  
+        requests:   
+            storage: 3Gi    

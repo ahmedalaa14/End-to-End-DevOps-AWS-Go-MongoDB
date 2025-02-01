@@ -11,7 +11,7 @@
 - [Helm](https://helm.sh/docs/intro/install/) installed
 - [GitHub_CLI](https://github.com/cli/cli) installed
 - [K9s](https://k9scli.io/topics/install/) installed
-- [Studio_3T](https://studio3t.com/download/) OR [MongoDB_Compass](https://www.mongodb.com/try/download/atlascli)
+- [MongoDB_Compass](https://www.mongodb.com/try/download/atlascli)
 
 # Steps 
 
